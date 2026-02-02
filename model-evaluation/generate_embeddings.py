@@ -1,10 +1,8 @@
 import numpy as np
 from datasets import load_dataset
 from sentence_transformers import SentenceTransformer
-from sklearn.metrics.pairwise import cosine_similarity
-from tqdm import tqdm
 import os
-from csv import reader, writer
+from csv import reader
 import json
 
 def gemini_embedded(texts, label):
