@@ -31,7 +31,7 @@ def gemini_embedded(texts, label):
     np.savez(f"{label}.npz", embeddings=all_embeddings)
 
 def embed_assistive_tech(generate_gemini_embeddings=False):
-    with open("assistive_technotes_300.csv") as f:
+    with open("assistive_technotes_320.csv") as f:
         facts = reader(f)
         contexts = [fact[1] for fact in facts]
         contexts = contexts[1:]
@@ -57,7 +57,7 @@ def embed_squad(generate_gemini_embeddings=False):
 def embed_dataset(dataset_name, questions, contexts, most_relevant_context, generate_gemini_embeddings=False):
     print(f"Questions: {len(questions)}")
     print(f"Contexts: {len(contexts)}")
-    np.savez(f"datasets/{dataset_name}.npz", questions, contexts, most_relevant_context)
+    np.savez(f"datasets/{dataset_name}.npz", questions=questions, contexts=contexts, most_relevant_context=most_relevant_context)
     if generate_gemini_embeddings:
         gemini_embedded(questions, f"embeddings/{dataset_name}_questions_gemini_3072")
         gemini_embedded(contexts, f"embeddings/{dataset_name}_contexts_gemini_3072")

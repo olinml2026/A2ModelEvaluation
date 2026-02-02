@@ -4,7 +4,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 def evaluate_dataset(dataset_name):
     print(f"Evaluating dataset {dataset_name}")
     d = np.load('datasets/'+dataset_name+'.npz')
-    questions, contexts, most_relevant = d["arr_0"], d["arr_1"], d["arr_2"]
+    questions, contexts, most_relevant = d["questions"], d["contexts"], d["most_relevant_context"]
 
     embeddings = ["gemini_3072", "all-mpnet-base-v2", "multi-qa-MiniLM-L6-dot-v1"]
     for embedding in embeddings:
